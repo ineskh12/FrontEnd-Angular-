@@ -1,0 +1,4 @@
+export class Vedio {
+  id: number;
+  url: string;
+}
