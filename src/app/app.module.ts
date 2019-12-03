@@ -4,10 +4,12 @@ import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
 import { AppComponent } from './app.component';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import {FormsModule} from '@angular/forms';
+import { VedioComponent } from './vedio/vedio.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    VedioComponent
   ],
   imports: [
     BrowserModule, NgxYoutubePlayerModule.forRoot(), FormsModule
@@ -17,5 +19,7 @@ import {FormsModule} from '@angular/forms';
 })
 export class AppModule {
 
-
 }
+
+platformBrowserDynamic().bootstrapModule(AppModule);
+

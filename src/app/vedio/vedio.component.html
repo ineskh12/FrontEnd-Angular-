@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="jumbotron bg-light">
+    <h1 class="display-4">Angular + Symfony</h1>
+    <form class="form-inline mr-auto">
+      <input  class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" #Search  >
+
+      <button class="btn btn-outline-danger btn-rounded waves-effect"  (click)="show(Search)" type="submit">Search</button>
+    </form>
+
+
+    {{ this.idparam }}
+    {{ this.id }}
+    <hr class="my-4">
+    <section class="card card-info text-white bg-dark mb-3">
+      <div class="card-header">vedio</div>
+      <section class="card-img-top">
+        <youtube-player
+          [videoId]= 'this.id'
+          (ready)="savePlayer($event)"
+          (change)="onStateChange($event)"
+          [playerVars]="playerVars">
+        </youtube-player>
+      </section>
+      <div class="card-body"></div>
+    </section>
+    <button
+      type="button"
+      class="btn btn-primary"
+      (click)="playVideo()">
+      Play
+    </button>
+    <button
+      type="button"
+      class="btn btn-danger"
+      (click)="pauseVideo()">
+      Pause
+    </button>
+  </div>
+</div>
+
+<div class="col-12">
+  <section class="card card-success">
+    <div class="card-body">
+      <div class="card-title">Player State</div>
+      <pre>{{ ytEvent }}</pre>
+    </div>
+  </section>
+</div>
