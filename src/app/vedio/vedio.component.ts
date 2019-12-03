@@ -1,5 +1,6 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {Observable} from 'rxjs';
+import {Component, OnInit, EventEmitter, Output} from '@angular/core';
+
+
 import {VedioService} from '../service/vedio.service';
 
 @Component({
@@ -8,11 +9,17 @@ import {VedioService} from '../service/vedio.service';
   styleUrls: ['./vedio.component.css']
 })
 export class VedioComponent implements OnInit {
-  public idparam = '' ;
+  public idparam ;
+  public id  ;
+  public search ;
 
 
-  private id= '6babsRG3WpQ' ;
-  constructor(private myservice: VedioService) { }
+  constructor(private myservice: VedioService) {
+    this.id = '';
+    this.idparam = '';
+    console.log(this.id);
+    console.log(this.idparam);
+  }
 
 
   playerVars = {
@@ -21,32 +28,26 @@ export class VedioComponent implements OnInit {
 
   private player;
   private ytEvent;
-
-
   ngOnInit() {
 
     console.log('ines');
-
-
-  }
-
-
-
-show(Search)  {
-    this.idparam = Search.value.substring(32, Search.value.length);
-    const  str4 = '\'' + this.idparam + '\'';
-    this.id =this.idparam ;
-
-   // console.log(str4);
-    console.log(this.idparam);
-    return this.id;
+    console.log(this.id);
+    console.log(this.search);
+    // this.show(this.search);
 
   }
 
-
+  public show(event, Search) {
+      console.log(event.click);
+      this.idparam = Search.value.substring(32, Search.value.length);
+      const  str4 = '\'' + this.idparam + '\'';
+      this.id += this.idparam ;
+      console.log(this.idparam);
+  }
 
   onStateChange(event) {
     this.ytEvent = event.data;
+    console.log(event.data);
   }
   savePlayer(player) {
     this.player = player;

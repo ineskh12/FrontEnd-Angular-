@@ -4,18 +4,18 @@
     <form class="form-inline mr-auto">
       <input  class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" #Search  >
 
-      <button class="btn btn-outline-danger btn-rounded waves-effect"  (click)="show(Search)" type="submit">Search</button>
+      <button class="btn btn-outline-danger btn-rounded waves-effect"  (click)="show($event,Search)" type="submit">Search</button>
     </form>
 
 
     {{ this.idparam }}
-    {{ this.id }}
+
     <hr class="my-4">
     <section class="card card-info text-white bg-dark mb-3">
-      <div class="card-header">vedio</div>
+      <div class="card-header">video</div>
       <section class="card-img-top">
         <youtube-player
-          [videoId]= 'this.id'
+          [videoId]= "id"
           (ready)="savePlayer($event)"
           (change)="onStateChange($event)"
           [playerVars]="playerVars">
