@@ -1,4 +1,5 @@
 import {Component, OnInit, Output} from '@angular/core';
+import {VedioService} from '../service/vedio.service';
 
 @Component({
   selector: 'app-search-bar',
@@ -6,18 +7,16 @@ import {Component, OnInit, Output} from '@angular/core';
   styleUrls: ['./search-bar.component.css']
 })
 export class SearchBarComponent implements OnInit {
-  @Output ()search: string;
-  //@Input() sideBar: SideBarComponent;
 
- // @HostListener('click')
-  click() {
-   // this.sideBar.toggle();
-  }
-
-
-  constructor() { }
+  search: string;
+  constructor(private service: VedioService) { }
 
   ngOnInit() {
+  }
+
+  send(search) {
+    this.service.changeMessage(search.value);
+    console.log(this.search);
   }
 
 }
