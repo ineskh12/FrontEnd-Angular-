@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, ElementRef, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-video-view',
@@ -6,12 +6,21 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./video-view.component.css']
 })
 export class VideoViewComponent implements OnInit {
-  @Input ()search: string;
 
-  constructor() { }
+
+  constructor(private hostElement: ElementRef) { }
 
   ngOnInit() {
-    console.log(this.search);
+
+  }
+
+  link(youtube) {
+
+    console.log("ines");
+    const url = youtube.value.replace('watch?v=', 'embed/');
+    console.log(youtube.value);
+    const iframe = this.hostElement.nativeElement.querySelector('iframe');
+    iframe.src = url;
   }
 
 }
