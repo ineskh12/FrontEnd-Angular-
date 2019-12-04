@@ -1,6 +1,7 @@
+
 <form class="form-inline mr-auto">
   <input  class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" #Search [(ngModel)]="search" name="search" >
 
-  <button class="btn btn-outline-danger btn-rounded waves-effect" (click)="send(Search)"  type="submit">Search</button>
-
+  <button class="btn btn-outline-danger btn-rounded waves-effect" (click)="send(Search);addHistory(Search)"  type="submit">Search</button>
 </form>
+

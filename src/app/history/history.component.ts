@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-history',
@@ -7,9 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HistoryComponent implements OnInit {
 
-  constructor() { }
+  historyObj = { youtube: [] };
+
+  constructor(private hostElement: ElementRef) { }
 
   ngOnInit() {
+    this.historyObj = JSON.parse(localStorage.getItem('youtube'));
+    this.historyObj.youtube.map(video => {
+      video = video.replace('watch?v=', 'embed/') ;
+      const iframe = document.createElement('iframe');
+      document.getElementById('historyBox').appendChild(iframe);
+      iframe.src = video;
+    });
   }
 
 }
